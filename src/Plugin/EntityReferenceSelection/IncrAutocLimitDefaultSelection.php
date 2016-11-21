@@ -2,26 +2,24 @@
 
 namespace Drupal\incr_autoc_limit\Plugin\EntityReferenceSelection;
 
-use Drupal\Component\Utility\Html;
-use Drupal\Core\Entity\Plugin\EntityReferenceSelection\DefaultSelection;
+use Drupal\node\Plugin\EntityReferenceSelection\NodeSelection;
 
 /**
- * Default plugin implementation of the Entity Reference Selection plugin.
+ * Entity reference selection.
  *
  * @EntityReferenceSelection(
- *   id = "incr_autoc_limit_default",
- *   label = @Translation("Incr. Autoc. Limit Default"),
+ *   id = "incr_autoc_limit:node",
+ *   label = @Translation("Incr. Autoc. Limit Node"),
  *   group = "custom",
  * )
  */
-class IncrAutocLimitDefaultSelection extends DefaultSelection {
+class IncrAutocLimitDefaultSelection extends NodeSelection {
 
   /**
    * {@inheritdoc}
    */
   public function getReferenceableEntities($match = NULL, $match_operator = 'CONTAINS', $limit = 0) {
-    // Increase selection limit.
-    parent::getReferenceableEntities($match, $match_operator, 25);
+    return parent::getReferenceableEntities($match, $match_operator, 25);
   }
 
 }
